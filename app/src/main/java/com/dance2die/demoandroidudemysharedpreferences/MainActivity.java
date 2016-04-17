@@ -1,6 +1,8 @@
 package com.dance2die.demoandroidudemysharedpreferences;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -36,6 +38,25 @@ public class MainActivity extends AppCompatActivity {
 
         String userName = sharedPreferences.getString("userName", "");
         Log.i("userName", userName);
+
+
+        new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle("Are you sure?")
+                .setMessage("Really sure?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Log.i("Button tabbed in dialog", "Yes");
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Log.i("Button tabbed in dialog", "No");
+                    }
+                })
+                .show();
     }
 
     @Override
